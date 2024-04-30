@@ -1,25 +1,30 @@
 class MyQueue:
 
     def __init__(self):
-        self.in_stack = []
-        self.out_stack = []
+        self.__in_stack = []
+        self.__out_stack = []
 
     def push(self, x: int) -> None:
-        self.in_stack.append(x)
+        self.__in_stack.append(x)
 
     def pop(self) -> int:
-        if len(self.out_stack) == 0:
-            while len(self.in_stack) > 0:
-                self.out_stack.append(self.in_stack.pop())
-            return self.out_stack.pop()
+        if len(self.__out_stack) == 0:
+            while len(self.__in_stack) > 0:
+                self.__out_stack.append(self.__in_stack.pop())
+            return self.__out_stack.pop()
         else:
-            return self.out_stack.pop()
+            return self.__out_stack.pop()
 
     def peek(self) -> int:
-        pass
+        if len(self.__out_stack) == 0:
+            while len(self.__in_stack) > 0:
+                self.__out_stack.append(self.__in_stack.pop())
+            return self.__out_stack[-1]
+        else:
+            return self.__out_stack[-1]
 
     def empty(self) -> bool:
-        pass
+        return len(self.__out_stack) + len(self.__in_stack) == 0
 
 
 def stack_t():
@@ -29,4 +34,10 @@ def stack_t():
 
 
 if __name__ == '__main__':
-    stack_t()
+    qq = MyQueue()
+    qq.push(1)
+    qq.push(2)
+    qq.push(3)
+    qq.pop()
+    qq.pop()
+    qq.peek()
