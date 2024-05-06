@@ -30,3 +30,9 @@ class Solution_111:
 
         if node.right:
             self.in_order(node.right, level + 1)
+
+        return self.min_depth
+
+
+if __name__ == '__main__':
+    pass

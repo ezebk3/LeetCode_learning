@@ -23,7 +23,7 @@ class Solution_144:
 
         return self.r_list
 
-    def postorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+    def postorderTraversal2(self, root: Optional[TreeNode]) -> List[int]:
         r_stack = []
         if root:
             t_stack = [root]
@@ -37,6 +37,26 @@ class Solution_144:
                     t_stack.append(node.right)
 
         return r_stack[::-1]
+
+    def postorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+
+        r_stack = []
+        if root:
+            t_stack = [root]
+            while t_stack:
+                node = t_stack.pop()
+                if node:
+                    t_stack.append(node)
+                    t_stack.append(None)
+                    if node.right:
+                        t_stack.append(node.right)
+                    if node.left:
+                        t_stack.append(node.left)
+                else:
+                    cur = t_stack.pop()
+                    r_stack.append(cur.val)
+
+        return r_stack
 
 
 if __name__ == '__main__':
