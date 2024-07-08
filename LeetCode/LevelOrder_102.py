@@ -54,4 +54,4 @@ if __name__ == '__main__':
     root = TreeNode(val=3, left=TreeNode(val=9), right=TreeNode(val=20, left=TreeNode(val=15), right=TreeNode(val=7)))
 
     s = Solution_102()
-    print(s.levelOrder(root))
+    print(s.levelOrder1(root))
